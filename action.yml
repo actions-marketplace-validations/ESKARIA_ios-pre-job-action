@@ -22,6 +22,7 @@ runs:
         replace=""
         result=${str//$find/$replace}
         echo "FOLDER_NAME=${result}" >> $GITHUB_ENV
+      shell: bash
     - name: Setup Release version for app
       run: |
         env
@@ -31,3 +32,4 @@ runs:
         result=${str//$find/$replace}
         echo ${result}
         echo "APP_VERSION=${result}" >> $GITHUB_ENV
+      shell: bash
