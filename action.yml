@@ -6,9 +6,6 @@ branding:
   color: blue
 
 inputs:
-  repository_git:
-    description: 'Repository'
-    required: true
   repository_owner:
     description: 'Repository owner'
     required: true
@@ -20,8 +17,8 @@ runs:
   steps:
     - name: Set App Name
       run: |
-        str=${{ inputs.repository_git }}
-        find="${{ inputs.repository_owner }}"
+        str=${{ github.repository }}
+        find="${{ inputs.repository_owner }}/"
         replace=""
         result=${str//$find/$replace}
         echo "FOLDER_NAME=${result}" >> $GITHUB_ENV
