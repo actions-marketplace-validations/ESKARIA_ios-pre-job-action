@@ -31,5 +31,9 @@ runs:
         replace=""
         result=${str//$find/$replace}
         echo ${result}
+        find="refs/heads/"
+        replace=""
+        result=${result//$find/$replace}
+        echo ${result}
         echo "APP_VERSION=${result}" >> $GITHUB_ENV
       shell: bash
