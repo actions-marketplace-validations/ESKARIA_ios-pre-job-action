@@ -6,6 +6,9 @@ branding:
   color: blue
 
 inputs:
+  repository_git:
+    description: 'Repository'
+    required: true
   repository_owner:
     description: 'Repository owner'
     required: true
@@ -17,7 +20,7 @@ runs:
   steps:
     - name: Set App Name
       run: |
-        str=${{ github.repository }}
+        str=${{ inputs.repository_git }}
         find="${{ inputs.repository_owner }}"
         replace=""
         result=${str//$find/$replace}
