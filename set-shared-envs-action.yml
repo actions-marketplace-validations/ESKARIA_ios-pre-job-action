@@ -1,0 +1,28 @@
+name: 'Set shared envs'
+description: 'Set app name from repo and release version'
+inputs:
+  repository_owner:
+    description: 'Repository owner'
+    required: true
+  commit_ref:
+    description: 'Commit reference'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Set App Name
+      run: |
+        str=${{ github.repository }}
+        find="${{ inputs.repository_owner }}"
+        replace=""
+        result=${str//$find/$replace}
+        echo "FOLDER_NAME=${result}" >> $GITHUB_ENV
+    - name: Setup Release version for app
+      run: |
+        env
+        str="${{ inputs.commit_ref }}"
+        find="release/"
+        replace=""
+        result=${str//$find/$replace}
+        echo ${result}
+        echo "APP_VERSION=${result}" >> $GITHUB_ENV
