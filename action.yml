@@ -1,5 +1,10 @@
 name: 'Set shared envs'
 description: 'Set app name from repo and release version'
+author: 'emvakar'
+branding:
+  icon: 'bell'
+  color: blue
+
 inputs:
   repository_owner:
     description: 'Repository owner'
@@ -8,7 +13,7 @@ inputs:
     description: 'Commit reference'
     required: true
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
     - name: Set App Name
       run: |
